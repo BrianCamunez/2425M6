@@ -1,3 +1,5 @@
+let solucionSeleccionada
+
 const preguntas = [
     {
         pregunta: '¿En qué continente está situado España?',
@@ -51,33 +53,48 @@ const preguntas = [
     }
 ];
 
+function SacarPregunta(){
+    const numero = numeroAleatorio()
+    const duda = preguntas[numero]
+    console.log(duda.pregunta)
+    document.querySelector("#question").innerHTML = duda.pregunta
+    console.log(document.querySelector('#question'))
+
+    let html = ''
+    duda.respuesta.forEach((solucion, contador)=>{
+
+        html += `<button class="btn btn-primary" id="answer${contador+1}" onclick=mirarRespuesta()>${solucion}</button>`
+        
+
+    })
+
+    document.querySelector("#answers").innerHTML = html
+
+    const verdadera = duda.verdadera;
+
+    duda.respuesta.forEach((solucion, contador)=>{
+        document.querySelector(`#answer${contador + 1}`).addEventListener("click" , () => {mirarRespuesta(solucion, verdadera)})
+    })
+
+}
+
+
+function mirarRespuesta(solucion, verdadera){
+    solucionSeleccionada = solucion
+    console.log(solucionSeleccionada)
+    console.log(verdadera)
+    let resultado = document.querySelector('#result').innerHTML
+    if(solucionSeleccionada === verdadera){
+        console.log('Es la correcta')
+    }else{
+        console.log('No es correcta')
+    }
+
+}
+
 function numeroAleatorio(){
     let numero = Math.floor(Math.random()*10)
     return(numero)
 }
 
-function respuestaCorrecta(respuestaSeleccionada, numeroRandom){
-    if(respuestaSeleccionada === preguntas[numeroRandom].correcta){
-        console.log('correcto')
-    }else{
-        console.log('incorrecto')
-    }
-}
-
-function cargarPregunta(){
-    let numeroRandom = numeroAleatorio()
-    preguntaHtml = `
-    <h2 id="question" class="mt-4">${preguntas[numeroRandom].pregunta}</h2>
-      <div id="answers" class="d-grid gap-2 mt-3">
-        <button class="btn btn-primary" id="answer1" onclick="respuestaCorrecta('${preguntas[numeroRandom].respuesta[0]},${numeroAleatorio}')">${preguntas[numeroRandom].respuesta[0]}</button>
-        <button class="btn btn-primary" id="answer2" onclick="respuestaCorrecta('${preguntas[numeroRandom].respuesta[1]},${numeroAleatorio}')">${preguntas[numeroRandom].respuesta[1]}</button>
-        <button class="btn btn-primary" id="answer3" onclick="respuestaCorrecta('${preguntas[numeroRandom].respuesta[2]},${numeroAleatorio}')">${preguntas[numeroRandom].respuesta[2]}</button>
-        <button class="btn btn-primary" id="answer4" onclick="respuestaCorrecta('${preguntas[numeroRandom].respuesta[3]},${numeroAleatorio}')">${preguntas[numeroRandom].respuesta[3]}</button>
-      </div>
-      <div id="result" class="alert mt-3" style="display: none;"></div>
-      <button id="next-question" class="btn btn-secondary mt-3" onclick="cargarPregunta()">Siguiente Pregunta</button>
-    `
-    document.querySelector('#quiz').innerHTML = preguntaHtml
-}
-
-cargarPregunta()
+document.addEventListener("DOMContentLoaded",SacarPregunta)
