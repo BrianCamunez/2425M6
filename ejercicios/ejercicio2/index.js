@@ -63,7 +63,7 @@ function SacarPregunta(){
     let html = ''
     duda.respuesta.forEach((solucion, contador)=>{
 
-        html += `<button class="btn btn-primary" id="answer${contador+1}" onclick=mirarRespuesta()>${solucion}</button>`
+        html += `<button class="btn btn-primary" id="answer${contador + 1}" onclick="mirarRespuesta('${solucion}', '${duda.correcta}')">${solucion}</button>`
         
 
     })
@@ -72,24 +72,20 @@ function SacarPregunta(){
 
     const verdadera = duda.verdadera;
 
-    duda.respuesta.forEach((solucion, contador)=>{
-        document.querySelector(`#answer${contador + 1}`).addEventListener("click" , () => {mirarRespuesta(solucion, verdadera)})
-    })
-
 }
 
-
-function mirarRespuesta(solucion, verdadera){
-    solucionSeleccionada = solucion
-    console.log(solucionSeleccionada)
-    console.log(verdadera)
-    let resultado = document.querySelector('#result').innerHTML
-    if(solucionSeleccionada === verdadera){
-        console.log('Es la correcta')
-    }else{
-        console.log('No es correcta')
+function mirarRespuesta(solucion, verdadera) {
+    console.log(`Respuesta seleccionada: ${solucion}`);
+    console.log(`Respuesta correcta: ${verdadera}`);
+    let resultadoHtml = ''
+    
+    if (solucion === verdadera) {
+        console.log('Es la correcta');
+        document.querySelector('#result').innerHTML = "¡Correcto!";
+    } else {
+        console.log('No es correcta');
+        document.querySelector('#result').innerHTML = "Incorrecto.";
     }
-
 }
 
 function numeroAleatorio(){
