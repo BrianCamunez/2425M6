@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJ2 - Ficha</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Práctica 5</h1>
+    <p>Introduce tus datos en el formulario y pulsa 'Crear ficha' para generar la ficha con tu imagen e información</p>
+    <div class="row">
+      <div class="col-4 mt-5">
+        <div class="formulario">
+          <form action="" class="form" id="fichaForm">
+            <div class="mb-3">
+              <label class="form-label">Nombre: </label>
+              <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Primer apellido: </label>
+              <input type="text" class="form-control" id="primerApellido">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Segundo apellido: </label>
+              <input type="text" class="form-control" id="segundoApellido">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">DNI: </label>
+              <input type="text" class="form-control" id="dni">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">URL de la imagen: </label>
+              <input type="text" class="form-control" id="imageUrl">
+            </div>
+            <button type="button" class="btn btn-success" id="crearFicha">Crear ficha</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-4 mt-5">
+        <div class="card">
+          <img id="imagen" src="https://www.researchgate.net/profile/Maria-Monreal/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" class="card-img-top" alt="Imagen de usuario">
+          <div class="card-body">
+            <h5 class="card-title" id="nombreCompleto">Perico Mepiedras Rocosas</h5>
+            <p id="dniDerecha">DNI: 123456A</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 mt-5">
+        <div id="taulaUsuari" class="mt-5">
+          <!-- JavaScript -->
+        </div> 
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
