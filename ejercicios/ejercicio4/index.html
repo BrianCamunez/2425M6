@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <style>
+
+        body {
+             display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .general{
+            width: 600px;
+            margin-top: 200px;
+            border: 1px solid black;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .separacion{
+            display: flex;
+            justify-content: center;
+            
+        }
+
+        h3{
+            text-align: center;
+        }
+    
+        .formulario{
+            align-items: center;
+        }
+
+        form{
+            margin: 0;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .izquierda{
+            width: 50%;
+            padding: 20px;
+        }
+
+        .derecha{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="general">
+        <h3>Introduce tus datos en el formulario y pulsa 'Crear ficha' para generar la ficha con tu imagen e información</h3>
+        <div class="separacion">
+            <div class="izquierda">
+                <div class="formulario">
+                    <form action="">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" value="Juan">
+                        <label for="primerApellido">Primer apellido:</label>
+                        <input type="text" id="primerApellido" name="primerApellido" value="Pérez">
+                        <label for="segundoApellido">Segundo apellido:</label>
+                        <input type="text" id="segundoApellido" name="segundoApellido" value="García">
+                        <label for="dni">DNI:</label>
+                        <input type="text" id="dni" name="dni" value="12345678A">
+                        <label for="imageUrl">URL de la imagen:</label>
+                        <input type="text" id="imageUrl" name="imageUrl" value="https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg">
+                        <button type="button" id="crearFicha">Crear fitxa</button>
+                    </form>
+                </div>
+            </div>
+            <div class="derecha">
+                <img  id="imagen" src="" alt="FotoPerfil">
+                <h4 id="nombreCompleto">Nombre completo</h4>
+                <h5 id="dniDerecha">DNI : XXXXXXXXX</h5>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
