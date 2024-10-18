@@ -1,3 +1,8 @@
+const modal1 = new bootstrap.Modal(document.querySelector("#exampleModal1"))
+const modal2 = document.querySelector("#exampleModal2")
+
+modal1.show
+
 const posiciones = [
     { top: '450px', right: '440px' },
     { top: '380px', right: '440px' },
@@ -55,12 +60,14 @@ function tirarDados(){
             perderTurnoJugador1=false;
         }else{
             moverJugador(jugador1,numeroDado);
+            cargarPregunta(jugador1);
         }
     }else{
         if(perderTurnoJugador2){
             perderTurnoJugador2=false;
         }else{
             moverJugador(jugador2,numeroDado);
+            cargarPregunta(jugador2);
         }
     }
     
@@ -133,8 +140,7 @@ function casillasEspeciales(jugador, posicion){
             window.location.reload();
             break;
         default:
-            SacarPregunta(jugador);
-            mostrarModal(turno)
+            cargarPregunta(jugador);
             console.log("Pregunta X");
     }
     function actualizarPosicion(posicionNueva){
@@ -161,25 +167,24 @@ function numeroAleatorio(){
     return(numero)
 }
 
-function SacarPregunta(jugador){
+function cargarPregunta(jugador){
     if(jugador === jugador1){
         const numero = numeroAleatorio()
         const duda = preguntas[numero]
         console.log(duda.pregunta)
+        const modal1 = document.querySelector("#exampleModal1")
+        const modal2 = document.querySelector("#exampleModal2")
+    
+        if (modal1) modal1.hide();
+        if (modal2) modal2.hide();
         document.querySelector("#question").innerHTML = duda.pregunta
         console.log(document.querySelector('#question'))
         let html = ''
         duda.respuesta.forEach((solucion, contador)=>{
-    
             html += `<button class="btn btn-primary" id="answer${contador + 1}" onclick="mirarRespuesta('${solucion}', '${duda.correcta}')">${solucion}</button>`
-            
-    
         })
-
         document.querySelector("#answers").innerHTML = html
-
-        const verdadera = duda.verdadera;
-
+        modal1.show();
     }else{
         const numero = numeroAleatorio()
         const duda = preguntas[numero]
@@ -188,27 +193,11 @@ function SacarPregunta(jugador){
         console.log(document.querySelector('#question2'))
         let html = ''
         duda.respuesta.forEach((solucion, contador)=>{
-    
             html += `<button class="btn btn-primary" id="answer${contador + 1}2" onclick="mirarRespuesta('${solucion}', '${duda.correcta}')">${solucion}</button>`
-            
-    
         })
-
         document.querySelector("#answers2").innerHTML = html
-
-        const verdadera = duda.verdadera; 
+        modal2.show();
     }
-
-    function mostrarModal(turno) {
-        if (turno === 0) { // Turno del jugador 1
-            const modal = new bootstrap.Modal(document.getElementById('exampleModal1'));
-            modal.show();
-        } else { // Turno del jugador 2
-            const modal = new bootstrap.Modal(document.getElementById('exampleModal2'));
-            modal.show();
-        }
-    }
-
 }
 
 const preguntas = [
