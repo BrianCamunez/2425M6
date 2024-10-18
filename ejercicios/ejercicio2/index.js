@@ -94,3 +94,4 @@ function numeroAleatorio(){
 }
 
 document.addEventListener("DOMContentLoaded",SacarPregunta)
+

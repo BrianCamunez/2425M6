@@ -4,29 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atrápame</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
   <style>
     body {
+      background-color: #f8f9fa;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column; 
     }
+    .juegoEntero {
+      width: 1800px;
+      height: 600px;
+      display: flex;
+    }
+    .preguntaPJ1, .preguntaPJ2 {
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      position: relative; /* Para que el modal se posicione relativo a este contenedor */
+    }
     .titulo {
       text-align: center;
     }
-    .tablero{
+    .tablero {
       position: relative;
       width: 600px;
       height: 600px;
     }
-
-    .tablero img{
+    .tablero img {
       width: 100%;
       height: 100%;
     }
-
     .circulo {
       width: 30px;
       height: 30px;
@@ -45,23 +60,95 @@
       top: 450px;
       right: 410px;
     }
+    .modal-content {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    #botonTirarDados {
+      margin-left: 260px;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #botonTirarDados:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <div class="titulo">
-    <h2>Juego de Fichas</h2>
-    <h4>turno</h4>
+  <div class="juegoEntero">
+    <div class="preguntaPJ1">
+      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="position: absolute; top: 0; left: 0;">
+        <div class="modal-dialog" style="position: relative;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Preguntas Jugador 1</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2 id="question" class="mt-4">¿Cuál es la capital de Francia?</h2>
+              <div id="answers" class="d-grid gap-2 mt-3">
+                <button class="btn btn-primary" id="answer1">París</button>
+                <button class="btn btn-primary" id="answer2">Londres</button>
+                <button class="btn btn-primary" id="answer3">Berlín</button>
+                <button class="btn btn-primary" id="answer4">Madrid</button>
+              </div>
+              <div id="result1" class="alert mt-3" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="juegoMedio">
+      <div class="titulo">
+        <h2>Juego de Fichas</h2>
+        <h4>turno</h4>
+      </div>
+      <div class="tablero">
+        <img src="tablero.png" alt="">
+        <div class="circulo" id="jugador1"></div>
+        <div class="circulo" id="jugador2"></div>
+      </div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" id="botonTirarDados">
+        Tirar dados
+      </button>
+    </div>
+
+    <div class="preguntaPJ2">
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="position: absolute; top: 0; right: 0;">
+        <div class="modal-dialog" style="position: relative;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Preguntas Jugador 2</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2 id="question2" class="mt-4">¿Cuál es la capital de Alemania?</h2>
+              <div id="answers2" class="d-grid gap-2 mt-3">
+                <button class="btn btn-primary" id="answer12">Berlín</button>
+                <button class="btn btn-primary" id="answer22">París</button>
+                <button class="btn btn-primary" id="answer32">Londres</button>
+                <button class="btn btn-primary" id="answer42">Madrid</button>
+              </div>
+              <div id="result2" class="alert mt-3" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="tablero">
-    <img src="tablero.png" alt="">
-    <div class="circulo" id="jugador1"></div>
-    <div class="circulo" id="jugador2"></div>
-  </div>
-  <div class="dados">
-    <button id="botonTirarDados">tirar dados</button>
-  </div>
+
+  <!-- Bootstrap JS and dependencies (Popper.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
 </body>
-</html>
-
 </html>
