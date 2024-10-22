@@ -1,8 +1,3 @@
-const modal1 = new bootstrap.Modal(document.querySelector("#exampleModal1"))
-const modal2 = document.querySelector("#exampleModal2")
-
-modal1.show
-
 const posiciones = [
     { top: '450px', right: '440px' },
     { top: '380px', right: '440px' },
@@ -42,67 +37,67 @@ const posiciones = [
     { top: '260px', right: '200px' },
 ];
 
-let jugador1= document.querySelector("#jugador1");
+let jugador1 = document.querySelector("#jugador1");
 let posicion1 = 0;
-let jugador2= document.querySelector("#jugador2");
+let jugador2 = document.querySelector("#jugador2");
 let turno = 1;
 let posicion2 = 0;
 let perderTurnoJugador1 = false;
 let perderTurnoJugador2 = false;
-const tirarDadosBoton = document.querySelector("#botonTirarDados");
-tirarDadosBoton.addEventListener("click", tirarDados);
+const tirarDadosBoton1 = document.querySelector("#botonTirarDados1");
+const tirarDadosBoton2 = document.querySelector("#botonTirarDados2");
 
-function tirarDados(){
+
+
+tirarDadosBoton1.addEventListener("click", () => {
+    if (turno % 2 !== 0) {
+        tirarDados(jugador1);
+    }
+});
+
+tirarDadosBoton2.addEventListener("click", () => {
+    if (turno % 2 === 0) {
+        tirarDados(jugador2);
+    }
+});
+
+function tirarDados(jugador) {
     const numeroDado = Math.floor(Math.random() * 6) + 1;
     console.log(numeroDado);
-    if(turno%2===0){
-        if(perderTurnoJugador1){
-            perderTurnoJugador1=false;
-        }else{
-            moverJugador(jugador1,numeroDado);
-            cargarPregunta(jugador1);
-        }
-    }else{
-        if(perderTurnoJugador2){
-            perderTurnoJugador2=false;
-        }else{
-            moverJugador(jugador2,numeroDado);
-            cargarPregunta(jugador2);
-        }
-    }
-    
+    moverJugador(jugador, numeroDado);
+    cargarPregunta(jugador);
     turno++;
-
+    actualizarBotones();
 }
 
-function moverJugador(jugador, dado){
-    if(jugador === jugador1){
+function moverJugador(jugador, dado) {
+    if (jugador === jugador1) {
         posicion1 += dado;
-        if(posicion1<posiciones.length){
+        if (posicion1 < posiciones.length) {
             jugador.style.top = posiciones[posicion1].top;
             jugador.style.right = posiciones[posicion1].right;
-        }else{
-            posicion1 = posiciones.length -1;
+        } else {
+            posicion1 = posiciones.length - 1;
             jugador.style.top = posiciones[posicion1].top;
-            jugador.style.right = posiciones[posicion1].right; 
+            jugador.style.right = posiciones[posicion1].right;
         }
-        casillasEspeciales(jugador1,posicion1);
-    }else{
+        casillasEspeciales(jugador1, posicion1);
+    } else {
         posicion2 += dado;
-        if(posicion2<posiciones.length){
+        if (posicion2 < posiciones.length) {
             jugador.style.top = posiciones[posicion2].top;
             jugador.style.right = posiciones[posicion2].right;
-        }else{
-            posicion2 = posiciones.length -1;
+        } else {
+            posicion2 = posiciones.length - 1;
             jugador.style.top = posiciones[posicion2].top;
             jugador.style.right = posiciones[posicion2].right;
         }
-        casillasEspeciales(jugador2,posicion2);
+        casillasEspeciales(jugador2, posicion2);
     }
 }
 
-function casillasEspeciales(jugador, posicion){
-    switch(posicion){
+function casillasEspeciales(jugador, posicion) {
+    switch (posicion) {
         case 1:
             actualizarPosicion(20);
             break;
@@ -113,28 +108,28 @@ function casillasEspeciales(jugador, posicion){
             actualizarPosicion(10);
             break;
         case 11:
-            actualizarPosicion(0); 
+            actualizarPosicion(0);
             break;
         case 13:
-            actualizarPosicion(28);  
+            actualizarPosicion(28);
             break;
         case 17:
             perderTurno();
             break;
         case 21:
-            actualizarPosicion(23);  
+            actualizarPosicion(23);
             break;
         case 24:
-            actualizarPosicion(8); 
+            actualizarPosicion(8);
             break;
         case 29:
-            actualizarPosicion(26); 
+            actualizarPosicion(26);
             break;
         case 30:
             turno--;
             break;
         case 32:
-            actualizarPosicion(19); 
+            actualizarPosicion(19);
             break;
         case 35:
             window.location.reload();
@@ -143,62 +138,40 @@ function casillasEspeciales(jugador, posicion){
             cargarPregunta(jugador);
             console.log("Pregunta X");
     }
-    function actualizarPosicion(posicionNueva){
-        if (jugador === jugador1) {
-            jugador.style.top = posiciones[posicionNueva].top;
-            jugador.style.right = posiciones[posicionNueva].right; 
-        } else {
-            jugador.style.top = posiciones[posicionNueva].top;
-            jugador.style.right = posiciones[posicionNueva].right;
-        } 
+    function actualizarPosicion(posicionNueva) {
+        jugador.style.top = posiciones[posicionNueva].top;
+        jugador.style.right = posiciones[posicionNueva].right;
     }
-    function perderTurno(){
+    function perderTurno() {
         if (jugador === jugador1) {
             perderTurnoJugador1 = true;
         } else {
             perderTurnoJugador2 = true;
         }
     }
-
 }
 
-function numeroAleatorio(){
-    let numero = Math.floor(Math.random()*preguntas.length)
-    return(numero)
+function numeroAleatorio() {
+    return Math.floor(Math.random() * preguntas.length);
 }
 
-function cargarPregunta(jugador){
-    if(jugador === jugador1){
-        const numero = numeroAleatorio()
-        const duda = preguntas[numero]
-        console.log(duda.pregunta)
-        const modal1 = document.querySelector("#exampleModal1")
-        const modal2 = document.querySelector("#exampleModal2")
-    
-        if (modal1) modal1.hide();
-        if (modal2) modal2.hide();
-        document.querySelector("#question").innerHTML = duda.pregunta
-        console.log(document.querySelector('#question'))
-        let html = ''
-        duda.respuesta.forEach((solucion, contador)=>{
-            html += `<button class="btn btn-primary" id="answer${contador + 1}" onclick="mirarRespuesta('${solucion}', '${duda.correcta}')">${solucion}</button>`
-        })
-        document.querySelector("#answers").innerHTML = html
-        modal1.show();
-    }else{
-        const numero = numeroAleatorio()
-        const duda = preguntas[numero]
-        console.log(duda.pregunta)
-        document.querySelector("#question2").innerHTML = duda.pregunta
-        console.log(document.querySelector('#question2'))
-        let html = ''
-        duda.respuesta.forEach((solucion, contador)=>{
-            html += `<button class="btn btn-primary" id="answer${contador + 1}2" onclick="mirarRespuesta('${solucion}', '${duda.correcta}')">${solucion}</button>`
-        })
-        document.querySelector("#answers2").innerHTML = html
-        modal2.show();
+function cargarPregunta(jugador) {
+    const numero = numeroAleatorio();
+    const duda = preguntas[numero];
+    console.log(duda.pregunta);
+    if (jugador === jugador2) {
+        document.querySelector("#question2").innerHTML = duda.pregunta;
     }
 }
+
+function actualizarBotones() {
+    tirarDadosBoton1.disabled = (turno % 2 === 0);
+    tirarDadosBoton2.disabled = (turno % 2 !== 0);
+}
+
+// Inicializar el estado de los botones al cargar
+actualizarBotones();
+
 
 const preguntas = [
     {

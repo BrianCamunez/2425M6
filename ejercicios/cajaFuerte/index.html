@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejericios caja fuerte</title>
+</head>
+<body>
+    <h2>Ejercicio 1 - Capturar clics amb addEventListener()</h2>
+    <button id="boton1">Botó 1</button>
+    <button id="boton2">Botó 2</button>
+    <button id="boton3">Botó 3</button>
+    <script>
+        const boton1 = document.querySelector("#boton1")
+        const boton2 = document.querySelector("#boton2")
+        const boton3 = document.querySelector("#boton3")
+        boton1.addEventListener("click", console.log("Se ha clicado el boton1"))
+        boton2.addEventListener("click", console.log("Se ha clicado el boton2"))
+        boton3.addEventListener("click", console.log("Se ha clicado el boton3"))
+    </script>
+</body>
+</html>
