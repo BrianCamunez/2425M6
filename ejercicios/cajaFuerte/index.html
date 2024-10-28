@@ -1,22 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejericios caja fuerte</title>
-</head>
-<body>
+    <style>
+        .actiu {
+          color: red;
+          font-weight: bold;
+        }
+      </style>
+  </head>
+  <body>
     <h2>Ejercicio 1 - Capturar clics amb addEventListener()</h2>
     <button id="boton1">Botó 1</button>
     <button id="boton2">Botó 2</button>
     <button id="boton3">Botó 3</button>
-    <script>
-        const boton1 = document.querySelector("#boton1")
-        const boton2 = document.querySelector("#boton2")
-        const boton3 = document.querySelector("#boton3")
-        boton1.addEventListener("click", console.log("Se ha clicado el boton1"))
-        boton2.addEventListener("click", console.log("Se ha clicado el boton2"))
-        boton3.addEventListener("click", console.log("Se ha clicado el boton3"))
-    </script>
-</body>
+    <div id="miDiv">Contingut original</div>
+        <button id="boton">Canviar Contingut</button>
+    </div>
+    <div id="miDiv2">Text a mostrar/ocultar</div>
+        <button id="toggleButton">Mostrar/Ocultar</button>
+    </div>
+    <div id="miDiv3">
+        <div id="resultado">Numero aleatorio: </div>
+        <button id="botonRandom">Generar numero</button>    
+    </div>
+    <div id="miDiv4">
+        <img id="imagen" width="300px" height="300px" src="https://www.aon.es/personales/seguro-perro-gato/wp-content/uploads/sites/2/2021/04/bichon-maltes.jpg" alt="imagen">
+        <button id="cambiarImagen">Cambiar Imagen</button>
+    </div>
+    <div id="miDiv5">
+        <div id="miElement">Este es el elemento</div>
+        <button id="toggleClass">Canviar Classes</button>
+    </div>
+    <div id="miDiv6">
+        <ul id="fruitList"></ul>
+    </div>
+    <div id="miDiv7">
+        <div id="pregunta"></div>
+        <div id="respuesta"></div>
+    </div>
+    <div id="miDiv8">
+        <div id="resultado8"></div>
+        <button id="botonSumar">Sumar 2 numeros</button>
+    </div>
+    <div id="miDiv9">
+        <input type="text" id="entrada">
+        <div id="mensajeError" style="display: none;"></div>
+        <button id="botonValidar">Validar</button>
+    </div>
+    <div id="miDiv10">
+        <button id="botonAlerta">Mostar Alerta</button>
+    </div>
+    <div id="miDiv11">
+        <input type="number" id="numeroInput" placeholder="Pon un numero">
+        <button id="botonComparar10">Comparar Numero</button>
+        <div id="resultadoComparado"></div>
+    </div>
+    <div id="miDiv12">
+        <img id="imagen13" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTrdDBJXd66cTfK54UBmeog3o_SEEg7rhTvPfmGhO4RtCvpwxao" alt="imagenEx13" width="300px" height="300px">
+        <div id="resultadoAtributo"></div>
+        <button id="mostrarSrc">Mostrar Atributo "src"</button>
+    </div>
+    <div id="miDiv13">
+        <img width="300px" height="300px" id="imagenAlt" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTrdDBJXd66cTfK54UBmeog3o_SEEg7rhTvPfmGhO4RtCvpwxao" alt="Elefante">
+        <button id="eliminarAlt">Eliminar Atributo "Alt"</button>
+    </div>
+    <div id="miDiv14">
+        <div id="resultadoCondicional"></div>
+    </div>
+    <h1>Ejercicios de JavaScript (Math)</h1>
+    <div>
+        <input type="numeric" placeholder="introduce un numero" id="numeroInputAbs">
+        <div id="EjMath"></div>
+        <button id="botonAbs">Comprobar</button>
+    </div>
+    <div>
+        <input type="numeric" placeholder="introduce un numero" id="numeroInputSigno">
+        <div id="EjMathSigno"></div>
+        <button id="botonSigno">Comprobar</button>
+    </div>
+    <div>
+        <input type="numeric" placeholder="Introduce el primer numero" id="numero1Max">
+        <input type="numeric" placeholder="Introduce el primer segundo" id="numero2Max">
+        <input type="numeric" placeholder="Introduce el primer tercer" id="numero3Max">
+        <div id="resultadoMax"></div>
+        <button id="botonMax">Comprobar</button>
+    </div>
+    <div>
+        <input type="numeric" placeholder="Introduce el primer numero" id="numero1Min">
+        <input type="numeric" placeholder="Introduce el primer segundo" id="numero2Min">
+        <input type="numeric" placeholder="Introduce el primer tercer" id="numero3Min">
+        <div id="resultadoMin"></div>
+        <button id="botonMin">Comprobar</button>
+    </div>
+    <div>
+        <div id="resultadoMinArray"></div>
+    </div>
+    <div>
+        <h4>Raiz Cuadrada de 16</h4>
+        <div id="raizCuadrada"></div>
+    </div>
+    <div>
+        <h4>Aproximacion del numero</h4>
+        <div id="aproxNumero"></div>
+    </div>
+    <div>
+        <h4>Aproximacion del numero arriba</h4>
+        <div id="aproxNumeroArriba"></div>
+    </div>
+    <div>
+        <h4>Aproximacion del numero abajo</h4>
+        <div id="aproxNumeroAbajo"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>
