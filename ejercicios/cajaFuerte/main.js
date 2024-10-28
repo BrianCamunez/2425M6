@@ -169,15 +169,15 @@ function comprobarSigno() {
   let mensaje;
 
   switch (Math.sign(numeroSigno)) {
-      case 1:
-          mensaje = "El número es positivo.";
-          break;
-      case -1:
-          mensaje = "El número es negativo.";
-          break;
-      case 0:
-          mensaje = "El número es zero.";
-          break;
+    case 1:
+      mensaje = "El número es positivo.";
+      break;
+    case -1:
+      mensaje = "El número es negativo.";
+      break;
+    case 0:
+      mensaje = "El número es zero.";
+      break;
   }
 
   document.querySelector("#EjMathSigno").innerHTML = mensaje;
@@ -185,65 +185,210 @@ function comprobarSigno() {
 
 document.querySelector("#botonSigno").addEventListener("click", comprobarSigno);
 
-function encontrarMax(){
-
-  const numero1Max = document.querySelector("#numero1Max").value
-  const numero2Max = document.querySelector("#numero2Max").value
-  const numero3Max = document.querySelector("#numero3Max").value
+function encontrarMax() {
+  const numero1Max = document.querySelector("#numero1Max").value;
+  const numero2Max = document.querySelector("#numero2Max").value;
+  const numero3Max = document.querySelector("#numero3Max").value;
 
   const resultado = Math.max(numero1Max, numero2Max, numero3Max);
 
   document.querySelector("#resultadoMax").innerHTML = resultado;
-
 }
 
 document.querySelector("#botonMin").addEventListener("click", encontrarMin);
 
-function encontrarMin(){
-
-  const numero1Min = document.querySelector("#numero1Min").value
-  const numero2Min = document.querySelector("#numero2Min").value
-  const numero3Min = document.querySelector("#numero3Min").value
+function encontrarMin() {
+  const numero1Min = document.querySelector("#numero1Min").value;
+  const numero2Min = document.querySelector("#numero2Min").value;
+  const numero3Min = document.querySelector("#numero3Min").value;
 
   const resultado = Math.min(numero1Min, numero2Min, numero3Min);
 
   document.querySelector("#resultadoMin").innerHTML = resultado;
-
 }
 
 document.querySelector("#botonMin").addEventListener("click", encontrarMin);
 
-
-function minArray(arrayNumeros){
-
+function minArray(arrayNumeros) {
   return Math.min(...arrayNumeros);
-
 }
 
-var numerosArray = [3,7,2,9,4];
+var numerosArray = [3, 7, 2, 9, 4];
 
 document.querySelector("#resultadoMinArray").innerHTML = minArray(numerosArray);
 
-function raizCuadrada(){
+function raizCuadrada() {
   return Math.sqrt(16);
 }
 
-document.querySelector("#raizCuadrada").innerHTML = raizCuadrada()
+document.querySelector("#raizCuadrada").innerHTML = raizCuadrada();
 
-function aproxNumero(){
-  return Math.round(5.3)
+function aproxNumero() {
+  return Math.round(5.3);
 }
 
-document.querySelector("#aproxNumero").innerHTML = aproxNumero()
+document.querySelector("#aproxNumero").innerHTML = aproxNumero();
 
-function aproxNumeroArriba(){
-  return Math.ceil(5.3)
+function aproxNumeroArriba() {
+  return Math.ceil(5.3);
 }
 
-document.querySelector("#aproxNumeroArriba").innerHTML = aproxNumeroArriba()
+document.querySelector("#aproxNumeroArriba").innerHTML = aproxNumeroArriba();
 
-function aproxNumeroAbajo(){
+function aproxNumeroAbajo() {
   return Math.floor(5.3);
 }
 
-document.querySelector("#aproxNumeroAbajo").innerHTML = aproxNumeroAbajo()
+document.querySelector("#aproxNumeroAbajo").innerHTML = aproxNumeroAbajo();
+
+function interpolarVariables(nombre, edad) {
+  return `Mi nombre es ${nombre} y tengo ${edad} años`;
+}
+
+document.querySelector("#completarFrase").innerHTML = interpolarVariables(
+  "Brian",
+  "19"
+);
+
+function obtenerCaracter(cadena, posicion) {
+  return cadena.charAt(posicion);
+}
+
+document.querySelector("#charAt").innerHTML = obtenerCaracter(
+  "Me gusta el zumo de piña",
+  5
+);
+
+function encontrarPosicion(cadena, subcadena) {
+  return cadena.indexOf(subcadena);
+}
+document.querySelector("#indexOf").innerHTML = encontrarPosicion(
+  "Buenas tardes",
+  "tardes"
+);
+
+function repetirCadena(cadena, veces) {
+  return cadena.repeat(veces);
+}
+
+document.querySelector("#repeat").innerHTML = repetirCadena("Hola", 3);
+
+function obtenerString(cadena, inicio, final) {
+  return cadena.substring(inicio, final);
+}
+
+document.querySelector("#substring").innerHTML = obtenerString(
+  "JavaScript",
+  4,
+  6
+);
+
+function dividirCadena(cadena, separador) {
+  return cadena.split(separador);
+}
+
+document.querySelector("#split").innerHTML = dividirCadena(
+  "manzana,pera,platano",
+  ","
+);
+
+function empiezaCon(cadena, subcadena) {
+  return cadena.startsWith(subcadena);
+}
+
+document.querySelector("#startsWith").innerHTML = empiezaCon(
+  "JavaScript",
+  "Java"
+);
+
+function acabaCon(cadena, subcadena) {
+  return cadena.endsWith(subcadena);
+}
+
+document.querySelector("#endWith").innerHTML = acabaCon("JavaScript", "Script");
+
+function contieneCadena(cadena, subcadena) {
+  return cadena.includes(subcadena);
+}
+
+document.querySelector("#includes").innerHTML = contieneCadena(
+  "hola que tal",
+  "que"
+);
+
+function buscarCadena(cadena, subcadena) {
+  return cadena.search(subcadena);
+}
+
+document.querySelector("#search").innerHTML = buscarCadena(
+  "El cielo es azul",
+  "azul"
+);
+
+function buscarCoincidencias(cadena, coincidencia) {
+  return cadena.match(coincidencia);
+}
+
+document.querySelector("#match").innerHTML = buscarCoincidencias(
+  "Hola 123, adios 456",
+  /\d+/g
+);
+
+function cambiarCadena(cadena, cadenaAntigua, cadenaNueva) {
+  return cadena.replace(cadenaAntigua, cadenaNueva);
+}
+
+document.querySelector("#replace").innerHTML = cambiarCadena(
+  "Me gusta el pure",
+  "pure",
+  "pastel"
+);
+
+function cambiarTodo(cadena, cadenaAntigua, cadenaNueva) {
+  return cadena.replaceAll(cadenaAntigua, cadenaNueva);
+}
+
+document.querySelector("#replaceAll").innerHTML = cambiarTodo(
+  "Hola mundo, mundo",
+  "mundo",
+  "Javier"
+);
+
+function convertirMinusculas(cadena) {
+  return cadena.toLowerCase();
+}
+
+document.querySelector("#lowerCase").innerHTML =
+  convertirMinusculas("bUENos Dias");
+
+function convertirMayusculas(cadena) {
+  return cadena.toUpperCase(cadena);
+}
+
+document.querySelector("#upperCase").innerHTML = convertirMayusculas(
+  "esto estaba en minusculas"
+);
+
+function eliminarEspacioInicial(cadena) {
+  return cadena.trimStart();
+}
+
+document.querySelector("#trimStart").innerHTML = eliminarEspacioInicial(
+  "         Sin espacio inicial"
+);
+
+function eliminarEspacioFinal(cadena) {
+  return cadena.trimEnd();
+}
+
+document.querySelector("#trimEnd").innerHTML = eliminarEspacioFinal(
+  "Sin espacio final        "
+);
+
+function eliminarEspacioExtremos(cadena) {
+  return cadena.trim();
+}
+
+document.querySelector("#trim").innerHTML = eliminarEspacioExtremos(
+  "     Sin espacio en los extremos       "
+);
